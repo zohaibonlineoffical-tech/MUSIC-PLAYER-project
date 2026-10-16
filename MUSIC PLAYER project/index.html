@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0c1018">
+<title>MusicFlow | Your listening room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/app.js" defer></script>
+</head>
+
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand"><span class="brand-mark"><span></span><span></span><span></span></span><span>MusicFlow</span></div>
+            <nav class="main-nav" aria-label="Main navigation">
+                <p class="nav-label">Menu</p>
+                <button class="nav-item is-active" data-view="home"><span class="nav-icon">⌂</span> Home</button>
+                <button class="nav-item" data-view="discover"><span class="nav-icon">✦</span> Discover</button>
+                <button class="nav-item" data-view="library"><span class="nav-icon">▤</span> Your library</button>
+                <button class="nav-item" data-view="favorites"><span class="nav-icon">♡</span> Favorites <span class="nav-count" id="favoriteCount">0</span></button>
+                <p class="nav-label nav-label-space">Your playlists</p>
+                <button class="nav-item playlist-link" data-playlist="late-night"><span class="playlist-dot dot-violet"></span> Late night drive</button>
+                <button class="nav-item playlist-link" data-playlist="focus"><span class="playlist-dot dot-coral"></span> Focus mode</button>
+                <button class="nav-item playlist-link" data-playlist="sunday"><span class="playlist-dot dot-mint"></span> Sunday morning</button>
+            </nav>
+            <div class="sidebar-bottom">
+                <button class="nav-item" id="installHint"><span class="nav-icon">⇩</span> Get the desktop app</button>
+                <button class="profile-card" aria-label="Open profile menu"><span class="avatar">ZA</span><span><strong>Zohaib Ahmed</strong><small>Developer account</small></span><span class="more-icon">•••</span></button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="topbar">
+                <button class="icon-button menu-button" id="menuButton" aria-label="Open menu">☰</button>
+                <div class="history-controls"><button class="round-button" aria-label="Go back">‹</button><button class="round-button" aria-label="Go forward">›</button></div>
+                <label class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search songs from anywhere" autocomplete="off"><button id="clearSearch" aria-label="Clear search">×</button></label>
+                <div class="filter-pickers">
+                    <label class="country-picker"><span>Country</span><select id="countrySelect" aria-label="Search music by country"><option value="GLOBAL">All Countries</option><option value="PK">Pakistan</option><option value="IN">India</option><option value="US">United States</option><option value="GB">United Kingdom</option><option value="TR">Turkey</option><option value="KR">Korea</option><option value="AR">Arabic</option><option value="OTHER">Other</option></select></label>
+                    <label class="language-picker"><span>Language</span><select id="languageSelect" aria-label="Search music by language"><option value="ALL">All Languages</option><option value="Urdu">Urdu</option><option value="Punjabi">Punjabi</option><option value="Sindhi">Sindhi</option><option value="Pashto">Pashto</option><option value="Saraiki">Saraiki</option><option value="Balochi">Balochi</option><option value="English">English</option><option value="OTHER">Other</option></select></label>
+                </div>
+                <div class="topbar-actions"><button class="icon-button" id="themeToggle" aria-label="Switch theme">☼</button><button class="icon-button notification-button" aria-label="Notifications">♢<i></i></button><button class="top-avatar" aria-label="Open profile">ZA</button></div>
+            </header>
+
+            <section class="content-wrap" id="contentWrap">
+                <div class="page-heading">
+                    <div>
+                        <p class="eyebrow">Thursday, September 17</p>
+                        <h1 id="pageTitle">Good evening, Everyone</h1>
+                    </div><button class="outline-button" id="autoplayToggle"><span class="status-dot"></span> Autoplay <strong>On</strong></button></div>
+
+                <section class="hero-grid" aria-label="Current player">
+                    <div class="hero-copy">
+                        <div class="hero-copy-top"><span class="pill"><span class="live-dot"></span> Now playing</span><button class="icon-button subtle" id="heroFavorite" aria-label="Add current song to favorites">♡</button></div>
+                        <div class="hero-info">
+                            <p class="eyebrow" id="heroAlbum">Nightfall · 2024</p>
+                            <h2 id="heroTitle">Midnight Dreams</h2>
+                            <p id="heroArtist">Alex Morgan</p>
+                        </div>
+                        <div class="hero-meta"><span id="heroGenre">Electronic / Chillwave</span><span class="meta-separator"></span><span id="heroTrackNumber">01 of 06</span></div>
+                    </div>
+                    <div class="artwork-stage">
+                        <div class="artwork-glow"></div><img id="heroArtwork" src="https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1000&q=85" alt="Album artwork for Midnight Dreams">
+                        <div class="artwork-badge">MFLW<br><small>SESSION 04</small></div>
+                    </div>
+                </section>
+
+                <section class="player-panel" aria-label="Audio player">
+                    <div class="progress-row"><span id="currentTime">0:00</span><input id="progressBar" type="range" min="0" max="100" value="0" aria-label="Song progress"><span id="totalTime">0:00</span></div>
+                    <div class="player-controls">
+                        <div class="control-cluster"><button class="control-button" id="shuffleButton" aria-label="Toggle shuffle">⤨</button><button class="control-button" id="previousButton" aria-label="Previous song">▮◀</button><button class="play-button" id="playButton" aria-label="Play current song">▶</button>
+                            <button class="control-button" id="nextButton" aria-label="Next song">▶▮</button><button class="control-button repeat-button" id="repeatButton" aria-label="Toggle repeat">↻<i></i></button></div>
+                        <div class="volume-control"><button class="control-button" id="muteButton" aria-label="Mute volume">◖</button><input id="volumeBar" type="range" min="0" max="1" step="0.01" value="0.72" aria-label="Volume"><span id="volumeValue">72</span></div>
+                    </div>
+                </section>
+
+                <section class="section-block" id="madeForYou">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">Curated for you</p>
+                            <h2>Made for your night</h2>
+                        </div><button class="text-button" data-view="discover">See all <span>→</span></button></div>
+                    <div class="collection-grid" id="collectionGrid"></div>
+                </section>
+                <section class="section-block queue-section" id="queueSection">
+                    <div class="section-heading">
+                        <div>
+                            <p class="eyebrow">Your rotation</p>
+                            <h2 id="queueTitle">Recently played</h2>
+                        </div><button class="text-button" id="queueAction">View queue <span>→</span></button></div>
+                    <div class="region-banner" id="regionBanner" aria-live="polite"><span>🌍</span><strong>Global Music</strong></div>
+                    <div class="queue-list" id="queueList"></div>
+                </section>
+                <footer>
+                    <div class="brand"><span class="brand-mark"><span></span><span></span><span></span></span><span>MusicFlow</span></div><span>Made for long nights and short commutes.</span><span>Developed by Zohaib Ahmed</span><span>© 2024 MusicFlow</span></footer>
+            </section>
+        </main>
+    </div>
+    <div class="mobile-player" id="mobilePlayer"><img id="miniArtwork" src="" alt="">
+        <div class="mini-copy"><strong id="miniTitle">Midnight Dreams</strong><span id="miniArtist">Alex Morgan</span></div><button class="mini-button" id="miniPlay" aria-label="Play current song">▶</button><button class="mini-button" id="miniNext" aria-label="Next song">▶▮</button></div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <audio id="audioPlayer" preload="metadata"></audio>
+</body>
+
+</html>
